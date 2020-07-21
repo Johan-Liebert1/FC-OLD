@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import FlashCard from './Card'
 
+import {Link} from 'react-router-dom'
 import {withStyles} from "@material-ui/styles"
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
@@ -22,6 +23,7 @@ function RenderCards({dummyData, classes}) {
 
     return (
         <div className={classes.root}>
+            <Link to="/add" style={{position: 'fixed', top: '10px'}}>Add</Link>
             <div className={classes.cards}>
                 
                 <FlashCard 
