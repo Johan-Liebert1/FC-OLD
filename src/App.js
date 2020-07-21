@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import FlashCard from "./Card"
 
 import dummyData from './seedData'
 import RenderCards from './RenderCards';

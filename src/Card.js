@@ -1,30 +1,14 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
+import { withStyles } from "@material-ui/styles";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
-  root: {
-    width: 350,
-    height: 400, 
-    backgroundColor: 'rgb(40,40,40)',
-    color: 'white',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer'
-  },
-  question : {
-      fontSize: '3rem',
-      fontWeight: '500'
-  },
-});
+import styles from './styles/CardStyles'
 
 
-function FlashCard({ question, answer }) {
-    const classes = useStyles();
+function FlashCard({ question, answer, classes }) {
     const [isQuestion, setIsQuestion] = useState(true)
 
     function handleClick() {
@@ -42,4 +26,4 @@ function FlashCard({ question, answer }) {
     );
 }
 
-export default FlashCard
+export default withStyles(styles)(FlashCard)
