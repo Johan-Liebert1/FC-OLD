@@ -18,24 +18,28 @@ const useStyles = {
     }
 }
 
-function AddQuestionForm({classes, data}) {
+function AddQuestionForm({classes, data, cardName, addQuestionsFromForm}) {
     const [separator, handleSeperatorChange, resetSeparator] = useInputState("")
     const [value, handleValueChange, reset] = useInputState("")
+    // console.log(cardName)
 
     const submitForm = (event) => {
         event.preventDefault()
+
         let separatedBy = separator
         let text = value
         let all_things = text.split("\n")
-        console.log(all_things) 
-        var new_data = data
+        // console.log(all_things) 
+        var new_data = data[cardName]
+
         for (let i = 0 ; i < all_things.length; i++){
             let question = all_things[i].split(separatedBy)[0]
             let answer = all_things[i].split(separatedBy)[1]
             let id = new_data.length
             new_data.push({id: id, question: question, answer: answer})
         }
-        window.localStorage.setItem("words", JSON.stringify(new_data))
+        // newData is a list
+        addQuestionsFromForm(cardName, new_data)
         
         reset()
         resetSeparator()
@@ -78,7 +82,7 @@ function AddQuestionForm({classes, data}) {
                     </Button>
                 </div>
             </form>
-            <Link to="/"><button>Home</button></Link>
+            <a href="/">Home</a>
         </div>
     )
 }
