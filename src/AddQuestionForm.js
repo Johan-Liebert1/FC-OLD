@@ -7,30 +7,54 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const useStyles = {
-  root: {
+    root: {
+        backgroundColor: 'rgba(0,0,0,0.6)',
+        height: '100vh',
+        color: 'white',
+        margin: 0,
+        paddingTop: '100px'
+    },
+
+    form: {
         width: '75%',
         display: 'flex',
         flexDirection: 'column',
-        margin: '100px auto',
+        margin: 'auto',
+        
     },
-    separatorField: {
-        // height: '15px'
-    }
+    unfocusedInput: {
+        color: '#545b5e'
+    },
+    focusedInput : {
+        color: 'white'
+    },
+    cssOutlinedInput: {
+        '&$cssFocused $notchedOutline': {
+          borderColor: `#545b5e !important`,
+        }
+    },
+    cssFocused: {
+        '&$cssFocused $notchedOutline': {
+          borderColor: `white !important`,
+        }
+    },
 }
 
-function AddQuestionForm({classes, data, cardName, addQuestionsFromForm}) {
+function AddQuestionForm({classes, data, addQuestionsFromForm}) {
+
     const [separator, handleSeperatorChange, resetSeparator] = useInputState("")
     const [value, handleValueChange, reset] = useInputState("")
-    // console.log(cardName)
+    // console.log("Data coming in the props: ", data)
 
     const submitForm = (event) => {
         event.preventDefault()
-
+        
         let separatedBy = separator
         let text = value
         let all_things = text.split("\n")
         // console.log(all_things) 
-        var new_data = data[cardName]
+
+        var new_data = data.cards
 
         for (let i = 0 ; i < all_things.length; i++){
             let question = all_things[i].split(separatedBy)[0]
@@ -39,14 +63,15 @@ function AddQuestionForm({classes, data, cardName, addQuestionsFromForm}) {
             new_data.push({id: id, question: question, answer: answer})
         }
         // newData is a list
-        addQuestionsFromForm(cardName, new_data)
+        addQuestionsFromForm(data.cardId, new_data)
         
         reset()
         resetSeparator()
     }
     
     return (
-        <div className={classes.root}>
+    <div className={classes.root}>
+        <div className={classes.form}>
             <form onSubmit={submitForm}>
                 <div className="form-group mb-5">
                     <TextField
@@ -58,6 +83,19 @@ function AddQuestionForm({classes, data, cardName, addQuestionsFromForm}) {
                         value={value}
                         onChange={handleValueChange}
                         fullWidth
+                        InputLabelProps={{
+                            classes: {
+                              root: classes.unfocusedInput,
+                              focused: classes.focusedInput,
+                            },
+                          }}
+                          InputProps={{
+                            classes: {
+                              root: classes.cssOutlinedInput,
+                              focused: classes.cssFocused,
+                              notchedOutline: classes.notchedOutline,
+                            }
+                        }}
                     />
                 </div>
 
@@ -77,13 +115,14 @@ function AddQuestionForm({classes, data, cardName, addQuestionsFromForm}) {
                 
                 
                 <div className="form-group mb-5">
-                    <Button variant="outlined" color="primary" type="submit">
+                    <Button variant="outlined" color="primary"  type="submit">
                         Submit
                     </Button>
                 </div>
             </form>
-            <a href="/">Home</a>
+            <Link to="/" style={{color: 'white'}}>Home</Link>
         </div>
+    </div>
     )
 }
 

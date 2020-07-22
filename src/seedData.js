@@ -1,6 +1,8 @@
-export default {
+export default [
     
-    english: [
+    { cardName: "English Words" ,
+    cardId: 'english-words',
+    cards: [
         {
             id: 1 , 
             question: 'Disingenious', 
@@ -31,8 +33,12 @@ export default {
             answer: 'Incapable of making mistakes'
         },
   
-    ],
-    japanese: [
+    ]},
+    
+    {
+    cardName: "Japanese Words",
+    cardId: 'japanese-words',
+    cards: [
         {
             id: 1 , 
             question: 'いしゃ', 
@@ -64,3 +70,4 @@ export default {
         },
     ]
 }
+]

@@ -8,12 +8,22 @@ const styles = {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      position: 'relative'
     },
     question : {
         fontSize: '3rem',
         fontWeight: '500'
     },
+    answer : {
+        fontSize: '1.5rem',
+        textAlign: 'center'
+    },
+    cardNumber : {
+        position: 'absolute',
+        top: '10px',
+        right: '10px'
+    }
   };
 
   export default styles

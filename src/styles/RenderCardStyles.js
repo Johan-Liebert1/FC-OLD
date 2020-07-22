@@ -4,7 +4,8 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        height: '100vh'
+        height: '100vh',
+        backgroundColor: 'rgba(0,0,0,0.5)'
     },
     right: {
         position: 'absolute',
@@ -29,6 +30,9 @@ const styles = {
     icon : {
         height: '50px',
         width: '50px'
+    }, 
+    link: {
+        color: 'white'
     }
 }
 
