@@ -9,6 +9,7 @@ import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import styles from './styles/RenderCardStyles'
 
 function RenderCards({dummyData, classes}) {
+    console.log("dummyData in RenderCards: ", dummyData)
     const [cardId, setCardId] = useState(0)
 
     const handleClickRight = () => {
@@ -24,6 +25,7 @@ function RenderCards({dummyData, classes}) {
     return (
         <div className={classes.root}>
             <Link to="/add" style={{position: 'fixed', top: '10px'}}>Add</Link>
+            <Link to="/" style={{position: 'fixed', left: '10px'}}>Home</Link>
             <div className={classes.cards}>
                 
                 <FlashCard 
@@ -32,12 +34,14 @@ function RenderCards({dummyData, classes}) {
                     
                 />
                 <div className={classes.icons}>
+
                     <div className={classes.right} onClick={handleClickRight}>
                         <KeyboardArrowRightIcon className={classes.icon}/>
                     </div>
                     <div className={classes.left} onClick={handleClickLeft}>
                         <KeyboardArrowLeftIcon className={classes.icon}/>
                     </div>
+
                 </div>
             </div>
         </div>

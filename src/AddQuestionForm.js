@@ -40,6 +40,7 @@ function AddQuestionForm({classes, data}) {
         reset()
         resetSeparator()
     }
+    
     return (
         <div className={classes.root}>
             <form onSubmit={submitForm}>
