@@ -39,7 +39,7 @@ function App() {
 
     return (
         <Switch>
-            <Route exact path="/" render={() => <Home data={words}/>} />
+            <Route exact path="/" render={routeProps => <Home data={words} {...routeProps}/>} />
             <Route 
                 exact 
                 path="/:cardId/add" 
