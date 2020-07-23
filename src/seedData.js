@@ -33,7 +33,31 @@ export default [
             question: 'Infallible', 
             answer: 'Incapable of making mistakes'
         },
-  
+        {
+            id: 6 , 
+            question: 'Serendipitous', 
+            answer: 'Happenning for a good reason'
+        },
+        {
+            id: 7 , 
+            question: 'Superflous', 
+            answer: 'Unnecessary'
+        },
+        {
+            id: 8 , 
+            question: 'Augury', 
+            answer: 'An Omen'
+        },
+        {
+            id: 9 , 
+            question: 'Asinine', 
+            answer: 'Stupid'
+        },
+        {
+            id: 10 , 
+            question: 'Abeyance', 
+            answer: 'In a temporary state of unuse'
+        },
     ]},
     
     {

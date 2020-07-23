@@ -2,13 +2,14 @@ export default {
     root: {
         width: 175,
         height: 200, 
-        backgroundColor: 'rgb(40,40,40)',
+        backgroundColor: 'black',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
         cursor: 'pointer',
-        position: 'relative'
+        position: 'relative',
+        boxShadow: '0 0 20px white'
       },
       question : {
         fontSize: '1rem',

@@ -2,14 +2,15 @@ const styles = {
     root: {
       width: 350,
       height: 400, 
-      backgroundColor: 'rgb(40,40,40)',
+      backgroundColor: 'black',
       color: 'white',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       cursor: 'pointer',
-      position: 'relative'
+      position: 'relative',
+      boxShadow: '0 0 20px white'
     },
     question : {
         fontSize: '3rem',

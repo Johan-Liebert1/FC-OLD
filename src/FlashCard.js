@@ -16,7 +16,7 @@ function FlashCard({ question, answer, classes, cardNumber }) {
     }    
 
     return (
-        <Card className={classes.root} onClick={handleClick}>
+        <Card className={`${classes.root}`} onClick={handleClick}>
             <CardContent>
                 <div className={classes.cardNumber}>{cardNumber + 1}</div>
                 <Typography className={isQuestion ? classes.question : classes.answer}>

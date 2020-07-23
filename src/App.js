@@ -5,6 +5,7 @@ import {Switch, Route} from 'react-router-dom'
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
 import dummyData from './seedData'
 import RenderCards from './RenderCards';
+import DeleteCards from './DeleteCards';
 import Home from './Home';
 import AddQuestionForm from './AddQuestionForm';
 import AddNewCardSetForm from './AddNewCardSetForm';
@@ -40,6 +41,16 @@ function App() {
         return to_return
     }
 
+    const deleteCards = (setId, id) => {
+        var new_words = cardsSet
+        for (let i = 0; i < cardsSet.length; i++){
+            if (new_words[i].setId === setId)
+                new_words[i].cards = new_words[i].cards.filter(card => card.id !== id)
+        }
+        setCardsSet(new_words)
+        window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
+    }
+
     return (
         <Switch>
             <Route exact path="/" render={routeProps => <Home entireSet={cardsSet} {...routeProps}/>} />
@@ -67,6 +78,17 @@ function App() {
                 render = {
                     () => <AddNewCardSetForm cardSet={cardsSet} addNewCardSet={addNewCardSet}/>
                 } 
+            />
+            <Route 
+                exact
+                path='/:setId/cards/delete'
+                render={
+                    (routeParams) =>( 
+                    <DeleteCards 
+                        cardSet={chooseSetToPass(routeParams.match.params.setId)}
+                        realDeleteCardsFromApp={deleteCards}
+                    />)
+                }
             />
         </Switch>
     );

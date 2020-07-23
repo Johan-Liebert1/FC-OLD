@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function CardsNavbar({setId}) {
     return (
@@ -21,9 +22,16 @@ function CardsNavbar({setId}) {
 
                     <li class="nav-item">
                         
-                        <Link to={`/${setId}/add`} className="nav-link">
+                        <Link to={`/${setId}/add`} className="nav-link mr-5">
                             <i class="far fa-plus-square mr-2"></i>
                             Add New Cards To Current Set
+                        </Link>
+                    </li>
+                    <li class="nav-item">
+                        
+                        <Link to={`/${setId}/cards/delete`} className="nav-link">
+                            <DeleteIcon className='mr-2'/>
+                            Delete Cards
                         </Link>
                     </li>
                 </ul>

@@ -31,7 +31,9 @@ function RenderCards({dummyData, classes}) {
     return (
         <div>
             <CardsNavbar setId={dummyData.setId}/>
+            <h4 className={classes.setName}>{dummyData.setName}</h4>
             <div className={classes.root}>
+                
                 <div className={classes.cards}>
                     
                     <FlashCard 
