@@ -32,6 +32,7 @@ function Home({data, classes, history}) {
     return (
         <div className={classes.root}>
             <h4>HOME</h4>
+            <Link to='/create/new-set' style={{color: 'white'}}>Create a new Set</Link>
             <div className={classes.container}>
             
             {data.map(card => 

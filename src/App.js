@@ -7,6 +7,7 @@ import dummyData from './seedData'
 import RenderCards from './RenderCards';
 import Home from './Home';
 import AddQuestionForm from './AddQuestionForm';
+import AddNewCardSetForm from './AddNewCardSetForm';
 
 function App() {
     const [words, setWords] = useLocalStorageState("words", dummyData)
@@ -22,13 +23,15 @@ function App() {
         setWords(
             new_words
         )
-        // console.log(words)
         window.localStorage.setItem('words', JSON.stringify(words))
-        // const stringed_words = JSON.stringify(words)
-        // console.log(stringed_words)
-        // window.localStorage.setItem("words", stringed_words)
-        
-            
+    }
+
+    const addNewCardSet = (setName, setCards) => {
+        let setId = setName.toLowerCase().replace(' ', '-')
+        let new_words = [...words, {cardName: setName, cardId: setId, cards: setCards} ]
+        setWords(new_words)
+        window.localStorage.setItem('words', JSON.stringify(words))
+
     }
 
     const chooseCardToPass = (id) => {
@@ -57,7 +60,14 @@ function App() {
                     <RenderCards 
                         dummyData={chooseCardToPass(routeParams.match.params.cardId)} 
                     />} 
-                />
+            />
+            <Route
+                exact 
+                path = "/create/new-set"
+                render = {
+                    () => <AddNewCardSetForm cardSet={words} addNewCardSet={addNewCardSet}/>
+                } 
+            />
         </Switch>
     );
 }

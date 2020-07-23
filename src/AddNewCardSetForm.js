@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import useInputState from './hooks/useInputState'
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/styles";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -20,39 +20,25 @@ const useStyles = {
         margin: 'auto',
         
     },
-    unfocusedInput: {
-        color: '#545b5e'
-    },
-    focusedInput : {
-        color: 'white'
-    },
-    cssOutlinedInput: {
-        '&$cssFocused $notchedOutline': {
-          borderColor: `#545b5e !important`,
-        }
-    },
-    cssFocused: {
-        '&$cssFocused $notchedOutline': {
-          borderColor: `white !important`,
-        }
-    },
 }
 
-function AddQuestionForm({classes, data, addQuestionsFromForm}) {
+function AddQuestionForm({classes, cardSet, addNewCardSet}) {
 
     const [separator, handleSeperatorChange, resetSeparator] = useInputState("")
     const [value, handleValueChange, reset] = useInputState("")
+    const [setName, handleSetNameChange, resetSetName] = useInputState("")
+    
     // console.log("Data coming in the props: ", data)
 
     const submitForm = (event) => {
         event.preventDefault()
-        
+
         let separatedBy = separator
         let text = value
         let all_things = text.split("\n")
         // console.log(all_things) 
 
-        var new_data = data.cards
+        var new_data = []
 
         for (let i = 0 ; i < all_things.length; i++){
             let question = all_things[i].split(separatedBy)[0]
@@ -60,17 +46,32 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
             let id = new_data.length
             new_data.push({id: id, question: question, answer: answer})
         }
+
         // newData is a list
-        addQuestionsFromForm(data.cardId, new_data)
+        addNewCardSet(setName, new_data)
         
         reset()
         resetSeparator()
+        resetSetName()
     }
     
     return (
     <div className={classes.root}>
         <div className={classes.form}>
             <form onSubmit={submitForm}>
+                <div className="form-group mb-5">
+                    <p>
+                        Please enter a unique name for the New Set
+                    </p>
+                    <TextField 
+                        className={classes.separatorField}
+                        id="outlined-basic" 
+                        label="Set Name" 
+                        variant="outlined" 
+                        value={setName}
+                        onChange={handleSetNameChange}
+                    />
+                </div>
                 <div className="form-group mb-5">
                     <TextField
                         id="standard-multiline-flexible"
@@ -81,19 +82,7 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
                         value={value}
                         onChange={handleValueChange}
                         fullWidth
-                        InputLabelProps={{
-                            classes: {
-                              root: classes.unfocusedInput,
-                              focused: classes.focusedInput,
-                            },
-                          }}
-                          InputProps={{
-                            classes: {
-                              root: classes.cssOutlinedInput,
-                              focused: classes.cssFocused,
-                              notchedOutline: classes.notchedOutline,
-                            }
-                        }}
+                        
                     />
                 </div>
 

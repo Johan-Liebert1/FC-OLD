@@ -1,6 +1,7 @@
 export default [
     
-    { cardName: "English Words" ,
+    { 
+    cardName: "English Words" ,
     cardId: 'english-words',
     cards: [
         {

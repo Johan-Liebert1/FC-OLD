@@ -35,7 +35,7 @@ function RenderCards({dummyData, classes}) {
                 style={{position: 'fixed', top: '10px'}}
                 className={classes.link}
             >
-                Add
+                Add More Cards
             </Link>
             <Link 
                 to="/" 

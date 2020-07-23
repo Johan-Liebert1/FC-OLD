@@ -5,7 +5,7 @@ const styles = {
         alignItems: 'center',
         flexWrap: 'wrap',
         height: '100vh',
-        backgroundColor: 'rgba(0,0,0,0.5)'
+        backgroundColor: 'black'
     },
     right: {
         position: 'absolute',
