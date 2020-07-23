@@ -5,7 +5,7 @@ import MiniCards from './MiniCards';
 
 const styles = {
     root: {
-        backgroundColor: "rgb(140,140,140)",
+        backgroundColor: "black",
         height: '100vh',
         paddingTop: '50px'
     },
@@ -31,7 +31,7 @@ function Home({entireSet, classes, history}) {
     }
     return (
         <div className={classes.root}>
-            <h4>HOME</h4>
+            <h4 style={{color: 'white'}}>HOME</h4>
             <Link to='/create/new-set' style={{color: 'white'}}>Create a new Set</Link>
             <div className={classes.container}>
             

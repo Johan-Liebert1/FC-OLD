@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import useInputState from './hooks/useInputState'
 
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
 
 const useStyles = {
     root: {
@@ -20,35 +21,41 @@ const useStyles = {
         margin: 'auto',
         
     },
-    unfocusedInput: {
-        color: '#545b5e'
-    },
-    focusedInput : {
-        color: 'white'
-    },
-    cssOutlinedInput: {
-        '&$cssFocused $notchedOutline': {
-          borderColor: `#545b5e !important`,
-        }
-    },
-    cssFocused: {
-        '&$cssFocused $notchedOutline': {
-          borderColor: `white !important`,
-        }
-    },
+    
 }
 
 function AddQuestionForm({classes, data, addQuestionsFromForm}) {
 
     const [separator, handleSeperatorChange, resetSeparator] = useInputState("")
-    const [value, handleValueChange, reset] = useInputState("")
-    // console.log("Data coming in the props: ", data)
+    const [input, handleInputChange, reset] = useInputState("")
+
+    useEffect(() => {
+        ValidatorForm.addValidationRule('required', (value) => {
+            if (value === '')
+                return false
+            else
+                return true
+        })
+        
+        
+
+    }, [separator, input])
+
+    useEffect(() => {
+        ValidatorForm.addValidationRule('noSeparatorFound', value => {
+            let all_input_chars = input.split("")
+            if (!all_input_chars.includes(separator))
+                return false
+            else
+                return true
+        })
+    }, [separator])
 
     const submitForm = (event) => {
         event.preventDefault()
         
         let separatedBy = separator
-        let text = value
+        let text = input
         let all_things = text.split("\n")
         // console.log(all_things) 
 
@@ -70,30 +77,23 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
     return (
     <div className={classes.root}>
         <div className={classes.form}>
-            <form onSubmit={submitForm}>
+            <ValidatorForm onSubmit={submitForm}>
                 <div className="form-group mb-5">
-                    <TextField
+                    <TextValidator
                         id="standard-multiline-flexible"
                         label="Questions and Answers Seperated by a Symbol"
                         multiline
                         variant="outlined"
+                        name="input"
                         rows={10}
-                        value={value}
-                        onChange={handleValueChange}
+                        value={input}
+                        onChange={handleInputChange}
                         fullWidth
-                        InputLabelProps={{
-                            classes: {
-                              root: classes.unfocusedInput,
-                              focused: classes.focusedInput,
-                            },
-                          }}
-                          InputProps={{
-                            classes: {
-                              root: classes.cssOutlinedInput,
-                              focused: classes.cssFocused,
-                              notchedOutline: classes.notchedOutline,
-                            }
-                        }}
+                        validators={['required']}
+                        errorMessages={[
+                            'This field is required'
+                        ]}
+                        
                     />
                 </div>
 
@@ -101,13 +101,19 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
                     <p>
                         Please enter the character seperating your questions from answers
                     </p>
-                    <TextField 
+                    <TextValidator
                         className={classes.separatorField}
                         id="outlined-basic" 
-                        label="Seperator" 
+                        label="Separator" 
+                        name="Separator"
                         variant="outlined" 
                         value={separator}
                         onChange={handleSeperatorChange}
+                        validators={['required', 'noSeparatorFound']}
+                        errorMessages={[
+                            'This field is required', 
+                            `The separator was not found in the input`
+                    ]}
                     />
                 </div>
                 
@@ -117,7 +123,7 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
                         Submit
                     </Button>
                 </div>
-            </form>
+            </ValidatorForm>
             <Link to="/">Home</Link>
         </div>
     </div>
