@@ -10,62 +10,62 @@ import AddQuestionForm from './AddQuestionForm';
 import AddNewCardSetForm from './AddNewCardSetForm';
 
 function App() {
-    const [words, setWords] = useLocalStorageState("words", dummyData)
+    const [cardsSet, setCardsSet] = useLocalStorageState("cardsSet", dummyData)
 
-    const addQuestionsFromForm =  (cardId, newData) => {
+    const addQuestionsFromForm =  (setId, newData) => {
         // newData is a list
-        var new_words = words
+        var new_words = cardsSet
         for (let i = 0; i < new_words.length; i++) {
-            if(new_words[i].cardId === cardId)
+            if(new_words[i].setId === setId)
                 new_words[i].cards = newData
         }
-        console.log(new_words)
-        setWords(
+        // console.log(new_words)
+        setCardsSet(
             new_words
         )
-        window.localStorage.setItem('words', JSON.stringify(words))
+        window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
     }
 
     const addNewCardSet = (setName, setCards) => {
         let setId = setName.toLowerCase().replace(' ', '-')
-        let new_words = [...words, {cardName: setName, cardId: setId, cards: setCards} ]
-        setWords(new_words)
-        window.localStorage.setItem('words', JSON.stringify(words))
+        let new_words = [...cardsSet, {setName: setName, setId: setId, cards: setCards} ]
+        setCardsSet(new_words)
+        window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
 
     }
 
-    const chooseCardToPass = (id) => {
-        const to_return = words.filter(card => id === card.cardId)[0]
+    const chooseSetToPass = (id) => {
+        const to_return = cardsSet.filter(set => id === set.setId)[0]
         console.log("Returned from filter: ", to_return)
         return to_return
     }
 
     return (
         <Switch>
-            <Route exact path="/" render={routeProps => <Home data={words} {...routeProps}/>} />
+            <Route exact path="/" render={routeProps => <Home entireSet={cardsSet} {...routeProps}/>} />
             <Route 
                 exact 
-                path="/:cardId/add" 
+                path="/:setId/add" 
                 render={routeParams => 
                     <AddQuestionForm 
-                        data={chooseCardToPass(routeParams.match.params.cardId)}
+                        data={chooseSetToPass(routeParams.match.params.setId)}
                         addQuestionsFromForm={addQuestionsFromForm}
                     />
                 } 
             />
             <Route 
                 exact 
-                path="/:cardId/cards" 
+                path="/:setId/cards" 
                 render={(routeParams) => 
                     <RenderCards 
-                        dummyData={chooseCardToPass(routeParams.match.params.cardId)} 
+                        dummyData={chooseSetToPass(routeParams.match.params.setId)} 
                     />} 
             />
             <Route
                 exact 
                 path = "/create/new-set"
                 render = {
-                    () => <AddNewCardSetForm cardSet={words} addNewCardSet={addNewCardSet}/>
+                    () => <AddNewCardSetForm cardSet={cardsSet} addNewCardSet={addNewCardSet}/>
                 } 
             />
         </Switch>

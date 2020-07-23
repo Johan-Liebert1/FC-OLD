@@ -27,7 +27,7 @@ const styles = {
       }
 }
 
-function MiniCards({words, classes, handleClick}) {
+function MiniCards({set, classes, handleClick}) {
     // words arring from Home component
 
     // create a mini card for each language 
@@ -38,10 +38,10 @@ function MiniCards({words, classes, handleClick}) {
             <Card className={classes.root}>
                 <CardContent>
                     <Typography className={classes.question}>
-                        {words.cardName}
+                        {set.setName}
                     </Typography>
                     <Typography className={classes.moreInfo}>
-                        {words.cards.length} Cards
+                        {set.cards.length} Cards
                     </Typography>
                 </CardContent>
             </Card>

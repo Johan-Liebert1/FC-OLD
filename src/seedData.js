@@ -1,8 +1,8 @@
 export default [
     
     { 
-    cardName: "English Words" ,
-    cardId: 'english-words',
+    setName: "English Words" ,
+    setId: 'english-words',
     cards: [
         {
             id: 1 , 
@@ -37,8 +37,8 @@ export default [
     ]},
     
     {
-    cardName: "Japanese Words",
-    cardId: 'japanese-words',
+    setName: "Japanese Words",
+    setId: 'japanese-words',
     cards: [
         {
             id: 1 , 

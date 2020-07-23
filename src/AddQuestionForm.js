@@ -61,7 +61,7 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
             new_data.push({id: id, question: question, answer: answer})
         }
         // newData is a list
-        addQuestionsFromForm(data.cardId, new_data)
+        addQuestionsFromForm(data.setId, new_data)
         
         reset()
         resetSeparator()

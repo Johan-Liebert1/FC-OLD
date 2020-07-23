@@ -31,7 +31,7 @@ function RenderCards({dummyData, classes}) {
     return (
         <div className={classes.root}>
             <Link 
-                to={`/${dummyData.cardId}/add`} 
+                to={`/${dummyData.setId}/add`} 
                 style={{position: 'fixed', top: '10px'}}
                 className={classes.link}
             >

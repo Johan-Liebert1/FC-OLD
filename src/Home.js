@@ -24,7 +24,7 @@ const styles = {
     }
 }
 
-function Home({data, classes, history}) {
+function Home({entireSet, classes, history}) {
     // const links = data_keys.map(key => <Link to={`${/key}`}>{key}</Link>)
     const goToCard = (id) => {
         history.push('/' + id + '/cards')
@@ -35,11 +35,11 @@ function Home({data, classes, history}) {
             <Link to='/create/new-set' style={{color: 'white'}}>Create a new Set</Link>
             <div className={classes.container}>
             
-            {data.map(card => 
+            {entireSet.map(set => 
                 (
                     <MiniCards 
-                        words={card} 
-                        handleClick={() => goToCard(card.cardId)}
+                        set={set} 
+                        handleClick={() => goToCard(set.setId)}
                     />
                 
                 )
