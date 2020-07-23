@@ -1,28 +1,13 @@
 import React, {useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import useInputState from './hooks/useInputState'
+import useStyles from './styles/AddQuestionFormStyles'
+import BasicNavbar from './Navbars/BasicNavbar';
+
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
 
-const useStyles = {
-    root: {
-        height: '100vh',
-        margin: 0,
-        paddingTop: '100px'
-    },
-
-    form: {
-        width: '75%',
-        display: 'flex',
-        flexDirection: 'column',
-        margin: 'auto',
-        
-    },
-    
-}
 
 function AddQuestionForm({classes, data, addQuestionsFromForm}) {
 
@@ -76,7 +61,10 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
     
     return (
     <div className={classes.root}>
+        <BasicNavbar />
+        
         <div className={classes.form}>
+            <h4 className="mb-5">Add A New Card to Set - {data.setName}</h4>
             <ValidatorForm onSubmit={submitForm}>
                 <div className="form-group mb-5">
                     <TextValidator
@@ -124,7 +112,6 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
                     </Button>
                 </div>
             </ValidatorForm>
-            <Link to="/">Home</Link>
         </div>
     </div>
     )
