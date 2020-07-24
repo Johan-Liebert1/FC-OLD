@@ -9,6 +9,7 @@ import DeleteCards from './DeleteCards';
 import Home from './Home';
 import AddQuestionForm from './AddQuestionForm';
 import AddNewCardSetForm from './AddNewCardSetForm';
+import EditCards from './EditCards'
 
 function App() {
     const [cardsSet, setCardsSet] = useLocalStorageState("cardsSet", dummyData)
@@ -41,7 +42,7 @@ function App() {
         return to_return
     }
 
-    const deleteCards = (setId, question, answer, selectedCards=[]) => {
+    const deleteCards = async (setId, question, answer, selectedCards=[]) => {
         if (selectedCards.length === 0){
             var new_words = cardsSet
             for (let i = 0; i < cardsSet.length; i++){
@@ -50,10 +51,9 @@ function App() {
                         card => (card.question !== question && card.answer !== answer)
                     )
             }
-            window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
-
-            setCardsSet(new_words)
+            await setCardsSet(new_words)
         }
+        window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
     }
 
     const deleteSet = (setId) => {
@@ -107,6 +107,16 @@ function App() {
                     <DeleteCards 
                         cardSet={chooseSetToPass(routeParams.match.params.setId)}
                         realDeleteCardsFromApp={deleteCards}
+                    />)
+                }
+            />
+            <Route 
+                exact
+                path='/:setId/cards/edit'
+                render={
+                    (routeParams) =>( 
+                    <EditCards 
+                        cardSet={chooseSetToPass(routeParams.match.params.setId)}
                     />)
                 }
             />

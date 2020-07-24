@@ -4,41 +4,10 @@ import useStyles from './styles/AddNewCardSetFormStyles'
 import BasicNavbar from './Navbars/BasicNavbar';
 
 import { withStyles } from "@material-ui/styles";
-import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
+import {ValidatorForm} from 'react-material-ui-form-validator'
 import Button from '@material-ui/core/Button';
 
-const TextValidatorStyled = withStyles({
-    root: {
-          //color of label, ie the words
-          '& label.Mui-focused': {
-          color: 'white',
-          },
-
-          //change the color of unfocused labels
-          '& label' : {
-            color: '#6c7473'
-          },
-  
-          '& .MuiOutlinedInput-root': {
-  
-              //below is for unfocused, unhovered text field
-              '& fieldset': {
-                  borderColor: 'rgb(140,140,140)',
-              },
-  
-              // is for hovered text field
-              '&:hover fieldset': {
-                  borderColor: '#6c7473',
-              },
-  
-              //focused text field
-              '&.Mui-focused fieldset': {
-                  borderColor: 'white',
-              },
-      },
-    },
-    
-  })(TextValidator);
+import TextValidatorStyled from './forms/TextValidatorStyled'
 
 function AddQuestionForm({classes, cardSet, addNewCardSet}) {
 

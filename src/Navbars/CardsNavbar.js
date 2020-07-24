@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 function CardsNavbar({setId}) {
     return (
@@ -29,9 +30,16 @@ function CardsNavbar({setId}) {
                     </li>
                     <li class="nav-item">
                         
-                        <Link to={`/${setId}/cards/delete`} className="nav-link">
+                        <Link to={`/${setId}/cards/delete`} className="nav-link mr-5">
                             <DeleteIcon className='mr-2'/>
                             Delete Cards
+                        </Link>
+                    </li>
+                    <li class="nav-item">
+                        
+                        <Link to={`/${setId}/cards/edit`} className="nav-link">
+                            <EditIcon className='mr-2'/>
+                            Edit Cards
                         </Link>
                     </li>
                 </ul>

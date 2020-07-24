@@ -7,7 +7,7 @@ const styles = {
     root : {
         padding: '30px 0 30px 0',
         backgroundColor: 'black',
-        height: '100vh'
+        minHeight: '100vh'
     },
     grid: {
         width: '80%',
@@ -62,10 +62,11 @@ function DeleteCards({cardSet, classes, realDeleteCardsFromApp}) {
                 {cardSet.cards.map(
                     (card, index) => <DisplaySetCards 
                             card={card} 
-                            key={index}
+                            key={card.question + toString(index)}
                             cardNumber={index+1}
                             addSelectedCards={addSelectedCards}
                             delete_Cards={delete_Cards}
+                            forDeletingCards
                         />
                 )}
             </div>
