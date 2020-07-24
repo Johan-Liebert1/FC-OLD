@@ -41,19 +41,39 @@ function App() {
         return to_return
     }
 
-    const deleteCards = (setId, id) => {
-        var new_words = cardsSet
-        for (let i = 0; i < cardsSet.length; i++){
-            if (new_words[i].setId === setId)
-                new_words[i].cards = new_words[i].cards.filter(card => card.id !== id)
+    const deleteCards = (setId, question, answer, selectedCards=[]) => {
+        if (selectedCards.length === 0){
+            var new_words = cardsSet
+            for (let i = 0; i < cardsSet.length; i++){
+                if (new_words[i].setId === setId)
+                    new_words[i].cards = new_words[i].cards.filter(
+                        card => (card.question !== question && card.answer !== answer)
+                    )
+            }
+            window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
+
+            setCardsSet(new_words)
         }
-        setCardsSet(new_words)
+    }
+
+    const deleteSet = (setId) => {
+        let newCardsSet = cardsSet.filter(set => set.setId !== setId)
+        setCardsSet(newCardsSet)
         window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
     }
 
     return (
         <Switch>
-            <Route exact path="/" render={routeProps => <Home entireSet={cardsSet} {...routeProps}/>} />
+            <Route 
+                exact 
+                path="/" 
+                render={routeProps => 
+                    <Home 
+                        entireSet={cardsSet} 
+                        {...routeProps}
+                        deleteSetFromApp = {deleteSet}
+                    />} 
+                />
             <Route 
                 exact 
                 path="/:setId/add" 

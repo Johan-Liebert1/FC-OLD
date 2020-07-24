@@ -20,7 +20,8 @@ const useStyles = {
       flexDirection: 'column',
       justifyContent: 'space-between',
       padding: '0 5 10 10',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      position: 'relative'
     },
     media: {
         height: 140,
@@ -30,6 +31,11 @@ const useStyles = {
     },
     button: {
         outline: 'none'
+    },
+    cardID: {
+        position: 'absolute',
+        right: '10px',
+        top: '10px'
     }
   }
 
@@ -48,25 +54,26 @@ class DisplaySetCards extends Component {
         this.setState({isSelected: !this.state.isSelected},() =>{
         
         if(this.state.isSelected){
-            this.props.addSelectedIds(this.props.card.id, true)
+            this.props.addSelectedCards(this.props.card.question, this.props.card.answer, true, false)
             console.log(this.state.isSelected)}
         else{
-            this.props.addSelectedIds(this.props.card.id, false)
+            this.props.addSelectedCards(this.props.card.question, this.props.card.answer, false, true)
             console.log(this.state.isSelected)}
         })
     }
 
     handleDeleteClick() {
-        this.props.deleteCards(this.props.id)
+        this.props.delete_Cards(this.props.card.question, this.props.card.answer)
     }
 
     render(){
 
-        const {card, classes} = this.props
+        const {card, classes, cardNumber} = this.props
         const {isSelected} = this.state
 
         return (
             <Card className={classes.root}>
+                <Typography className={classes.cardID}>{cardNumber}</Typography>
                 <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
@@ -93,7 +100,7 @@ class DisplaySetCards extends Component {
                         size="small" 
                         color="primary" 
                         variant={isSelected ? 'contained' : 'text'}
-                        // onClick={this.handleSelectClick}
+                        onClick={this.handleSelectClick}
                         style={{outline: 'none'}}
                     >
                         {isSelected ? 'Selected' : 'Select'}

@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 import DisplaySetCards from './DisplaySetCards'
 import {withStyles} from '@material-ui/styles'
 import Button from '@material-ui/core/Button'
-import red from '@material-ui/core/colors/red'
 
 const styles = {
     root : {
         padding: '30px 0 30px 0',
         backgroundColor: 'black',
+        height: '100vh'
     },
     grid: {
         width: '80%',
@@ -25,24 +25,26 @@ const styles = {
 }
 
 function DeleteCards({cardSet, classes, realDeleteCardsFromApp}) {
-    const [selectedIds, setSelectedIds] = useState([])
+    const [selectedCards, setSelectedCards] = useState([])
 
-    const deleteCards = (id) => {
+    const delete_Cards = (question, answer) => {
         // id is a list with either 1 or more elements
-        realDeleteCardsFromApp(cardSet.setId, id)
+        realDeleteCardsFromApp(cardSet.setId, question, answer)
     }
 
-    // const addSelectedIds = (id, doWeAdd = false) => {
-    //     if (doWeAdd){
-    //         let newlist = [...selectedIds, id]
-    //         setSelectedIds(newlist)
-    //     }
-    //     else{
-    //         let newlist = selectedIds.filter(id1 => id1 !== id)
-    //         setSelectedIds(newlist)
-    //     }
-    //     console.log(setSelectedIds)
-    // }
+    const addSelectedCards = (question, answer, doWeAdd = false) => {
+        if (doWeAdd){
+            let newlist = [...selectedCards, {question, answer}]
+            setSelectedCards(newlist)
+        }
+        else{
+            let newlist = selectedCards.filter(
+                card => (card.question !== question && card.answer !== answer)
+            )
+            setSelectedCards(newlist)
+        }
+        console.log(setSelectedCards)
+    }
 
     return (
 
@@ -58,13 +60,12 @@ function DeleteCards({cardSet, classes, realDeleteCardsFromApp}) {
 
             <div className={classes.grid}>
                 {cardSet.cards.map(
-                    card => 
-                        <DisplaySetCards 
+                    (card, index) => <DisplaySetCards 
                             card={card} 
-                            key={card.id}
-                            id={card.id}
-                            // addSelectedIds={addSelectedIds}
-                            deleteCards={deleteCards}
+                            key={index}
+                            cardNumber={index+1}
+                            addSelectedCards={addSelectedCards}
+                            delete_Cards={delete_Cards}
                         />
                 )}
             </div>

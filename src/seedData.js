@@ -94,5 +94,39 @@ export default [
             answer: 'Singer'
         },
     ]
+},{
+    setName: "Anime Manga Cards",
+    setId: 'anime-manga-cards',
+    cards: [
+        {
+            id: 1 , 
+            question: 'Monster', 
+            answer: 'Naoki Urasawa'
+        },
+
+        {
+            id: 2 , 
+            question: 'Berserk', 
+            answer: 'Kentaro Miura'
+        },
+
+        {
+            id: 3 , 
+            question: 'Legend of the Galactic Heores', 
+            answer: 'Yoshiki Tanaka'
+        },
+
+        {
+            id: 4 , 
+            question: 'Mushishi', 
+            answer: 'Urashibara Yuki'
+        },
+
+        {
+            id: 5 , 
+            question: '20th Century Boys', 
+            answer: 'Naoki Urasawa'
+        },
+    ]
 }
 ]
