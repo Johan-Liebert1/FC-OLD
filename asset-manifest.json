@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/flash_cards/static/css/main.1cae9c9e.chunk.css",
-    "main.js": "/flash_cards/static/js/main.df6fdd2c.chunk.js",
-    "main.js.map": "/flash_cards/static/js/main.df6fdd2c.chunk.js.map",
-    "runtime-main.js": "/flash_cards/static/js/runtime-main.886551fc.js",
-    "runtime-main.js.map": "/flash_cards/static/js/runtime-main.886551fc.js.map",
-    "static/css/2.af3c1da9.chunk.css": "/flash_cards/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.c14ab4ae.chunk.js": "/flash_cards/static/js/2.c14ab4ae.chunk.js",
-    "static/js/2.c14ab4ae.chunk.js.map": "/flash_cards/static/js/2.c14ab4ae.chunk.js.map",
-    "index.html": "/flash_cards/index.html",
-    "precache-manifest.2e3460fcb3de469aa7cca6f170190723.js": "/flash_cards/precache-manifest.2e3460fcb3de469aa7cca6f170190723.js",
-    "service-worker.js": "/flash_cards/service-worker.js",
-    "static/css/2.af3c1da9.chunk.css.map": "/flash_cards/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.1cae9c9e.chunk.css.map": "/flash_cards/static/css/main.1cae9c9e.chunk.css.map",
-    "static/js/2.c14ab4ae.chunk.js.LICENSE.txt": "/flash_cards/static/js/2.c14ab4ae.chunk.js.LICENSE.txt"
+    "main.css": "/Flash-Cards/static/css/main.1cae9c9e.chunk.css",
+    "main.js": "/Flash-Cards/static/js/main.d16ceb8c.chunk.js",
+    "main.js.map": "/Flash-Cards/static/js/main.d16ceb8c.chunk.js.map",
+    "runtime-main.js": "/Flash-Cards/static/js/runtime-main.3e3ab994.js",
+    "runtime-main.js.map": "/Flash-Cards/static/js/runtime-main.3e3ab994.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/Flash-Cards/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.c14ab4ae.chunk.js": "/Flash-Cards/static/js/2.c14ab4ae.chunk.js",
+    "static/js/2.c14ab4ae.chunk.js.map": "/Flash-Cards/static/js/2.c14ab4ae.chunk.js.map",
+    "index.html": "/Flash-Cards/index.html",
+    "precache-manifest.0424f459929ecb7d4caa95f38735fac6.js": "/Flash-Cards/precache-manifest.0424f459929ecb7d4caa95f38735fac6.js",
+    "service-worker.js": "/Flash-Cards/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/Flash-Cards/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.1cae9c9e.chunk.css.map": "/Flash-Cards/static/css/main.1cae9c9e.chunk.css.map",
+    "static/js/2.c14ab4ae.chunk.js.LICENSE.txt": "/Flash-Cards/static/js/2.c14ab4ae.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.886551fc.js",
+    "static/js/runtime-main.3e3ab994.js",
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.c14ab4ae.chunk.js",
     "static/css/main.1cae9c9e.chunk.css",
-    "static/js/main.df6fdd2c.chunk.js"
+    "static/js/main.d16ceb8c.chunk.js"
   ]
 }
