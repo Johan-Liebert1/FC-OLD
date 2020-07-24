@@ -33,6 +33,7 @@ function EditCards({classes, cardSet, editCardFromApp}) {
             (card.question !== oldCard.question && card.answer !== oldCard.answer)
         )
         newCardList = [...newCardList, newCard]
+        
         editCardFromApp(cardSet.setId, newCardList)
     }
 
