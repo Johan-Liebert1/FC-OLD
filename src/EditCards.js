@@ -19,7 +19,18 @@ const styles = {
     },
 }
 
-function EditCards({classes, cardSet}) {
+function EditCards({classes, cardSet, editCardFromApp}) {
+
+    function edit(oldCard, newCard) {
+        // oldCard and newCards are objects with cardId, question and answer
+        let newCardList = cardSet.cards.filter(card => 
+            (card.question !== oldCard.question && card.answer !== oldCard.answer)
+        )
+        newCardList = [...newCardList, newCard]
+        
+        editCardFromApp(cardSet.setId, newCardList)
+    }
+
     return (
         <div className={classes.root}>
             
@@ -30,6 +41,7 @@ function EditCards({classes, cardSet}) {
                             key={card.question + toString(index)}
                             cardNumber={index+1}
                             forDeletingCards={false}
+                            editCard={edit}
                         />
                 )}
             </div>

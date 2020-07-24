@@ -62,6 +62,17 @@ function App() {
         window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
     }
 
+    const editCardFromApp = (setId, newCardsList) => {
+        let new_cardSet = cardsSet
+        for (let i = 0; i < new_cardSet.length; i++){
+            if(new_cardSet[i].setId === setId){
+                new_cardSet[i].cards = newCardsList
+            }
+        }
+        setCardsSet(new_cardSet)
+        window.localStorage.setItem('cardsSet', JSON.stringify(cardsSet))
+    }
+
     return (
         <Switch>
             <Route 
@@ -117,6 +128,7 @@ function App() {
                     (routeParams) =>( 
                     <EditCards 
                         cardSet={chooseSetToPass(routeParams.match.params.setId)}
+                        editCardFromApp={editCardFromApp}
                     />)
                 }
             />

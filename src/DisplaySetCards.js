@@ -45,6 +45,7 @@ class DisplaySetCards extends Component {
         this.openEditForm = this.openEditForm.bind(this)
         this.handleQuestionChange = this.handleQuestionChange.bind(this)
         this.handleAnswerChange = this.handleAnswerChange.bind(this)
+        this.submitEdit = this.submitEdit.bind(this)
     }
     
     componentDidMount() {
@@ -96,13 +97,21 @@ class DisplaySetCards extends Component {
         this.setState({formAnswer: event.target.value})
     }
 
+    submitEdit() {
+        this.props.editCard(
+            this.props.card,
+            {id: this.props.card.id, question: this.state.formQuestion, answer: this.state.formAnswer}
+        )
+        
+    }
+
     render(){
 
         const {classes, card, cardNumber, forDeletingCards} = this.props
         const {isSelected, isDialogOpen, formOpen, formQuestion, formAnswer} = this.state
 
         const editForm = (
-            <ValidatorForm>
+            <ValidatorForm onSubmit={this.submitEdit}>
                 <TextValidatorStyled 
                     id="outlined-basic" 
                     label="Question" 
