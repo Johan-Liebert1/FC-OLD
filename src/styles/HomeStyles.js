@@ -8,9 +8,12 @@ const styles = {
           transition: "opacity 500ms ease-out"
         }
     },
+
     root: {
         backgroundColor: "black",
-        height: '100vh',
+        widht: '100vw',
+        minHeight: '100vh',
+        paddingBottom: '30px'
     },
     link: {
         color: 'white',
@@ -20,10 +23,14 @@ const styles = {
         fontSize: '3rem'
     },
     container : {
-        width: '700px',
+        width: '75%',
         margin: '50px auto',
-        display: 'flex',
-        justifyContent: 'space-between',
+        display: 'grid',
+        gridColumnGap: '40px',
+        gridRowGap: '40px',
+        gridTemplateColumns: 'auto auto auto auto',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     title: {
         color: 'white',

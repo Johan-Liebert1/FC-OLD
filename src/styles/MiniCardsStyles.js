@@ -17,10 +17,12 @@ export default {
     question : {
         fontSize: '1rem',
         color: 'white',
+        textAlign: 'center'
     },
     moreInfo : {
         fontSize: '0.7rem',
-        color: '#6c7473'
+        color: '#6c7473',
+        textAlign: 'center'
     },
     deleteIcon: {
         color: 'white',

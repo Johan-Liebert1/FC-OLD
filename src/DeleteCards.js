@@ -3,9 +3,11 @@ import DisplaySetCards from './DisplaySetCards'
 import {withStyles} from '@material-ui/styles'
 import Button from '@material-ui/core/Button'
 
+import BasicNavbar from './Navbars/BasicNavbar'
+
 const styles = {
     root : {
-        padding: '30px 0 30px 0',
+        padding: '0 0 30px 0',
         backgroundColor: 'black',
         minHeight: '100vh'
     },
@@ -20,7 +22,12 @@ const styles = {
     },
     button: {
         width: '80%',
-        margin: '0 auto',
+        margin: '30px auto',
+    },
+    title : {
+        color: 'white',
+        margin: '10px auto',
+        textAlign: 'center'
     }
 }
 
@@ -47,8 +54,9 @@ function DeleteCards({cardSet, classes, realDeleteCardsFromApp}) {
     }
 
     return (
-
         <div className={classes.root}>
+            <BasicNavbar />
+            <h3 className={classes.title}>Delete Cards in Set - {cardSet.setName}</h3>
             <div className={classes.button}>
                 <Button 
                     style={{background:'#FF0000', marginLeft: 'auto', outline: 'none', color: "white"}} 

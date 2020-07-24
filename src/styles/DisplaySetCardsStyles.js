@@ -1,17 +1,28 @@
 export default {
+    "@global": {
+        '&::-webkit-scrollbar-track' : {
+            backgroundColor: 'green'
+        },
+        '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'red'
+        }
+    },
+
     root: {
-      width: 345,
-      color: 'white',
-      backgroundColor: 'black',
-      margin: '5px',
-      boxShadow: '0 0 20px white',
-      height: 170,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      padding: '0 5 10 10',
-      overflow: 'hidden',
-      position: 'relative'
+        width: 345,
+        color: 'white',
+        backgroundColor: 'black',
+        margin: '5px',
+        boxShadow: '0 0 20px white',
+        height: 200,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: '0 5 10 10',
+        position: 'relative', 
+        overflowY: 'auto',
+        /* Track */
+        
     },
     media: {
         height: 140,

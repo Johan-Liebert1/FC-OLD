@@ -102,7 +102,7 @@ class DisplaySetCards extends Component {
             this.props.card,
             {id: this.props.card.id, question: this.state.formQuestion, answer: this.state.formAnswer}
         )
-        
+        this.setState({formOpen: false})
     }
 
     render(){
@@ -113,7 +113,6 @@ class DisplaySetCards extends Component {
         const editForm = (
             <ValidatorForm onSubmit={this.submitEdit}>
                 <TextValidatorStyled 
-                    id="outlined-basic" 
                     label="Question" 
                     variant="standard" 
                     value={formQuestion}
@@ -128,12 +127,12 @@ class DisplaySetCards extends Component {
                 />
                 <TextValidatorStyled 
                     className='mt-3'
-                    id="outlined-basic" 
                     label="Answer" 
                     variant="standard" 
                     value={formAnswer}
                     onChange={this.handleAnswerChange}
                     validators={['required']}
+                    fullWidth
                     errorMessages={[
                         'This field is required',
                     ]}
