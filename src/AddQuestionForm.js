@@ -8,6 +8,41 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
 
+const TextValidatorStyled = withStyles({
+    root: {
+          //color of label, ie the words
+          '& label.Mui-focused': {
+          color: 'white',
+          },
+
+          //change the color of unfocused labels
+          '& label' : {
+            color: '#6c7473'
+          },
+  
+          // '& .MuiInput-underline:after': {
+          // borderBottomColor: 'green',
+          // },
+  
+          '& .MuiOutlinedInput-root': {
+  
+              //below is for unfocused, unhovered text field
+              '& fieldset': {
+                  borderColor: 'rgb(140,140,140)',
+              },
+  
+              // is for hovered text field
+              '&:hover fieldset': {
+                  borderColor: '#6c7473',
+              },
+  
+              //focused text field
+              '&.Mui-focused fieldset': {
+                  borderColor: 'white',
+              },
+      },
+    },
+  })(TextValidator);
 
 function AddQuestionForm({classes, data, addQuestionsFromForm}) {
 
@@ -67,7 +102,7 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
             <h4 className="mb-5">Add A New Card to Set - {data.setName}</h4>
             <ValidatorForm onSubmit={submitForm}>
                 <div className="form-group mb-5">
-                    <TextValidator
+                    <TextValidatorStyled
                         id="standard-multiline-flexible"
                         label="Questions and Answers Seperated by a Symbol"
                         multiline
@@ -81,7 +116,9 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
                         errorMessages={[
                             'This field is required'
                         ]}
-                        
+                        InputProps={{
+                            className: classes.formInput
+                        }}
                     />
                 </div>
 
@@ -89,7 +126,7 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
                     <p>
                         Please enter the character seperating your questions from answers
                     </p>
-                    <TextValidator
+                    <TextValidatorStyled
                         className={classes.separatorField}
                         id="outlined-basic" 
                         label="Separator" 
@@ -102,12 +139,15 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
                             'This field is required', 
                             `The separator was not found in the input`
                     ]}
+                    InputProps={{
+                        className: classes.formInput
+                    }}
                     />
                 </div>
                 
                 
                 <div className="form-group mb-5">
-                    <Button variant="outlined" color="primary"  type="submit">
+                    <Button variant="outlined" color="inherit"  type="submit">
                         Submit
                     </Button>
                 </div>

@@ -1,7 +1,8 @@
 const useStyles = {
     root: {
-        height: '100vh',
         margin: 0,
+        backgroundColor: 'black',
+        color: 'white'
     },
 
     form: {
@@ -9,7 +10,12 @@ const useStyles = {
         display: 'flex',
         flexDirection: 'column',
         margin: '50px auto',
-        
+        marginBottom: 0
+    },
+
+    // to change the color of the text the user inputs
+    formInput: {
+        color: 'white',
     },
 }
 
