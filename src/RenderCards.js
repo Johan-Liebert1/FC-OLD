@@ -8,9 +8,11 @@ import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import styles from './styles/RenderCardStyles'
 import CardsNavbar from './Navbars/CardsNavbar';
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 function RenderCards({dummyData, classes}) {
 
-    console.log("dummyData in RenderCards: ", dummyData)
+    // console.log("dummyData in RenderCards: ", dummyData)
 
     const [cardId2, setCardId] = useState(0)
 
@@ -34,24 +36,28 @@ function RenderCards({dummyData, classes}) {
             <h4 className={classes.setName}>{dummyData.setName}</h4>
             <div className={classes.root}>
                 
-                <div className={classes.cards}>
-                    
-                    <FlashCard 
-                        question={cards[cardId2].question} 
-                        answer={cards[cardId2].answer} 
-                        cardNumber={cardId2}
-                    />
-                    <div className={classes.icons}>
+                
+                <TransitionGroup className={classes.cards}>
+                    <CSSTransition>
+                        <FlashCard 
+                            question={cards[cardId2].question} 
+                            answer={cards[cardId2].answer} 
+                            cardNumber={cardId2}
+                        />
+                    </CSSTransition>
+                </TransitionGroup>
+                
+                <div className={classes.icons}>
 
-                        <div className={classes.right} onClick={handleClickRight}>
-                            <KeyboardArrowRightIcon className={classes.icon}/>
-                        </div>
-                        <div className={classes.left} onClick={handleClickLeft}>
-                            <KeyboardArrowLeftIcon className={classes.icon}/>
-                        </div>
-
+                    <div className={classes.right} onClick={handleClickRight}>
+                        <KeyboardArrowRightIcon className={classes.icon}/>
                     </div>
+                    <div className={classes.left} onClick={handleClickLeft}>
+                        <KeyboardArrowLeftIcon className={classes.icon}/>
+                    </div>
+
                 </div>
+                
             </div>
         </div>
     )

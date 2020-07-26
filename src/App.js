@@ -1,15 +1,17 @@
 import React from 'react';
-import './App.css';
 import {Switch, Route} from 'react-router-dom'
 
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
 import dummyData from './seedData'
 import RenderCards from './RenderCards';
 import DeleteCards from './DeleteCards';
+import Page from './Page'
 import Home from './Home';
 import AddQuestionForm from './AddQuestionForm';
 import AddNewCardSetForm from './AddNewCardSetForm';
 import EditCards from './EditCards'
+
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 function App() {
     const [cardsSet, setCardsSet] = useLocalStorageState("cardsSet", dummyData)
@@ -74,65 +76,86 @@ function App() {
     }
 
     return (
+        <Route render = { ({location}) =>
+        <TransitionGroup>
+        <CSSTransition key={location.key} classNames="page" timeout={500}>
         <Switch>
+            
             <Route 
                 exact 
                 path="/" 
                 render={routeProps => 
+                    <Page>
                     <Home 
                         entireSet={cardsSet} 
                         {...routeProps}
                         deleteSetFromApp = {deleteSet}
-                    />} 
+                    />
+                    </Page>
+                    } 
                 />
             <Route 
                 exact 
                 path="/:setId/add" 
                 render={routeParams => 
+                    <Page>
                     <AddQuestionForm 
                         data={chooseSetToPass(routeParams.match.params.setId)}
                         addQuestionsFromForm={addQuestionsFromForm}
                     />
+                    </Page>
                 } 
             />
             <Route 
                 exact 
                 path="/:setId/cards" 
                 render={(routeParams) => 
+                    <Page>
                     <RenderCards 
                         dummyData={chooseSetToPass(routeParams.match.params.setId)} 
-                    />} 
+                    />
+                    </Page>
+                } 
             />
             <Route
                 exact 
                 path = "/create/new-set"
                 render = {
-                    () => <AddNewCardSetForm cardSet={cardsSet} addNewCardSet={addNewCardSet}/>
+                    () => <Page>
+                    <AddNewCardSetForm cardSet={cardsSet} addNewCardSet={addNewCardSet}/>
+                    </Page>
                 } 
             />
             <Route 
                 exact
                 path='/:setId/cards/delete'
                 render={
-                    (routeParams) =>( 
+                    (routeParams) => 
+                    <Page>
                     <DeleteCards 
                         cardSet={chooseSetToPass(routeParams.match.params.setId)}
                         realDeleteCardsFromApp={deleteCards}
-                    />)
+                    />
+                    </Page>
                 }
             />
             <Route 
                 exact
                 path='/:setId/cards/edit'
                 render={
-                    (routeParams) =>( 
+                    (routeParams) => 
+                    <Page>
                     <EditCards 
                         cardSet={chooseSetToPass(routeParams.match.params.setId)}
                         editCardFromApp={editCardFromApp}
-                    />)
+                    />
+                    </Page>
                 }
             />
         </Switch>
+        </CSSTransition>
+        </TransitionGroup>
+        }/>
     );
 }
 

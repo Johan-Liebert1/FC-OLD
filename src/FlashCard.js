@@ -7,23 +7,35 @@ import Typography from '@material-ui/core/Typography';
 
 import styles from './styles/FlashCardStyles'
 
+import ReactCardFlip from 'react-card-flip'
+
 
 function FlashCard({ question, answer, classes, cardNumber }) {
-    const [isQuestion, setIsQuestion] = useState(true)
+    const [isFlipped, setIsFlipped] = useState(true)
 
     function handleClick() {
-        setIsQuestion(!isQuestion)
+        setIsFlipped(!isFlipped)
     }    
 
     return (
-        <Card className={`${classes.root}`} onClick={handleClick}>
-            <CardContent>
-                <div className={classes.cardNumber}>{cardNumber + 1}</div>
-                <Typography className={isQuestion ? classes.question : classes.answer}>
-                    {isQuestion ? question : answer}
-                </Typography>
-            </CardContent>
-        </Card>
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+            <Card className={`${classes.root}`} onClick={handleClick}>
+                <CardContent>
+                    <div className={classes.cardNumber}>{cardNumber + 1}</div>
+                    <Typography className={classes.answer}>
+                        {answer}
+                    </Typography>
+                </CardContent>
+            </Card>
+            <Card className={`${classes.root}`} onClick={handleClick}>
+                <CardContent>
+                    <div className={classes.cardNumber}>{cardNumber + 1}</div>
+                    <Typography className={classes.question}>
+                        {question}
+                    </Typography>
+                </CardContent>
+            </Card>
+        </ReactCardFlip>
     );
 }
 

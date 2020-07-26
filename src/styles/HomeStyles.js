@@ -4,9 +4,26 @@ const styles = {
           opacity: 1
         },
         ".fade-exit-active": {
-          opacity: 0,
+          opacity: 0.01,
           transition: "opacity 500ms ease-out"
-        }
+        },
+
+        // ".card-enter": {
+        //     opacity: 0.01
+        // },
+        // ".card-enter-active": {
+        //     opacity: 1,
+        //     transition: "opacity 5000ms ease-in"
+        // },
+
+        // ".card-exit": {
+        //     opacity: 1
+        //   },
+
+        // ".card-exit-active": {
+        //     opacity: 0.01,
+        //     transition: "opacity 5000ms ease-out"
+        // },
     },
 
     root: {
