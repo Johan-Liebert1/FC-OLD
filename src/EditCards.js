@@ -30,10 +30,10 @@ function EditCards({classes, cardSet, editCardFromApp}) {
     function edit(oldCard, newCard) {
         // oldCard and newCards are objects with cardId, question and answer
         let newCardList = cardSet.cards.filter(card => 
-            (card.question !== oldCard.question && card.answer !== oldCard.answer)
+            // (card.question !== oldCard.question && card.answer !== oldCard.answer)
+            card.id !== oldCard.id
         )
         newCardList = [...newCardList, newCard]
-        
         editCardFromApp(cardSet.setId, newCardList)
     }
 

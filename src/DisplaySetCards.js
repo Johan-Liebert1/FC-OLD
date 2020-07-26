@@ -31,7 +31,6 @@ class DisplaySetCards extends Component {
         this.state = {
             isSelected: false,
             isDialogOpen: false,
-            isDeleted: false, 
             formOpen: false,
             formQuestion: this.props.card.question,
             formAnswer: this.props.card.answer
@@ -70,9 +69,8 @@ class DisplaySetCards extends Component {
     }
 
     handleDeleteClick() {
-        this.props.delete_Cards(this.props.card.question, this.props.card.answer)
+        this.props.delete_Cards(this.props.card.id)
         this.setState({isDialogOpen: false})
-        this.setState({isDeleted: !this.state.isDeleted})
     }
 
     openDialog() {
@@ -106,7 +104,7 @@ class DisplaySetCards extends Component {
     }
 
     render(){
-
+        console.log('DISPLAY SET CARDS : RERENDERED')
         const {classes, card, cardNumber, forDeletingCards} = this.props
         const {isSelected, isDialogOpen, formOpen, formQuestion, formAnswer} = this.state
 

@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 export default [
     
     { 
@@ -5,56 +7,56 @@ export default [
     setId: 'english-words',
     cards: [
         {
-            id: 1 , 
+            id: uuid(), 
             question: 'Disingenious', 
             answer: 'Not candid or sincere by pretending one know less than one actually does'
         },
 
         {
-            id: 2 , 
+            id: uuid(), 
             question: 'Scrutiny', 
             answer: 'Critical Observation'
         },
 
         {
-            id: 3 , 
+            id: uuid(), 
             question: 'Assail', 
             answer: 'Make a violent attack on'
         },
 
         {
-            id: 4 , 
+            id: uuid(), 
             question: 'Eschew', 
             answer: 'Deliberately Avoid Using'
         },
 
         {
-            id: 5 , 
+            id: uuid(), 
             question: 'Infallible', 
             answer: 'Incapable of making mistakes'
         },
         {
-            id: 6 , 
+            id: uuid(), 
             question: 'Serendipitous', 
             answer: 'Happenning for a good reason'
         },
         {
-            id: 7 , 
+            id: uuid(), 
             question: 'Superflous', 
             answer: 'Unnecessary'
         },
         {
-            id: 8 , 
+            id: uuid(), 
             question: 'Augury', 
             answer: 'An Omen'
         },
         {
-            id: 9 , 
+            id: uuid(), 
             question: 'Asinine', 
             answer: 'Stupid'
         },
         {
-            id: 10 , 
+            id: uuid(), 
             question: 'Abeyance', 
             answer: 'In a temporary state of unuse'
         },
@@ -65,31 +67,31 @@ export default [
     setId: 'japanese-words',
     cards: [
         {
-            id: 1 , 
+            id: uuid(), 
             question: 'いしゃ', 
             answer: 'Doctor'
         },
 
         {
-            id: 2 , 
+            id: uuid(), 
             question: 'へいし', 
             answer: 'Soldier'
         },
 
         {
-            id: 3 , 
+            id: uuid()  , 
             question: 'けんちくか', 
             answer: 'Architect'
         },
 
         {
-            id: 4 , 
+            id: uuid() , 
             question: 'きょうし', 
             answer: 'Teacher'
         },
 
         {
-            id: 5 , 
+            id: uuid()  , 
             question: 'かしゅ', 
             answer: 'Singer'
         },
@@ -99,31 +101,31 @@ export default [
     setId: 'anime-manga-cards',
     cards: [
         {
-            id: 1 , 
+            id: uuid()  , 
             question: 'Monster', 
             answer: 'Naoki Urasawa'
         },
 
         {
-            id: 2 , 
+            id: uuid() , 
             question: 'Berserk', 
             answer: 'Kentaro Miura'
         },
 
         {
-            id: 3 , 
+            id: uuid()  , 
             question: 'Legend of the Galactic Heores', 
             answer: 'Yoshiki Tanaka'
         },
 
         {
-            id: 4 , 
+            id: uuid(), 
             question: 'Mushishi', 
             answer: 'Urashibara Yuki'
         },
 
         {
-            id: 5 , 
+            id: uuid(), 
             question: '20th Century Boys', 
             answer: 'Naoki Urasawa'
         },

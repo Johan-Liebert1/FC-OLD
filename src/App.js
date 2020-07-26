@@ -44,13 +44,13 @@ function App() {
         return to_return
     }
 
-    const deleteCards = async (setId, question, answer, selectedCards=[]) => {
+    const deleteCards = async (setId, id, selectedCards=[]) => {
         if (selectedCards.length === 0){
             var new_words = cardsSet
             for (let i = 0; i < cardsSet.length; i++){
                 if (new_words[i].setId === setId)
                     new_words[i].cards = new_words[i].cards.filter(
-                        card => (card.question !== question && card.answer !== answer)
+                        card => card.id !== id
                     )
             }
             await setCardsSet(new_words)

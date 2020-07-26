@@ -34,9 +34,9 @@ const styles = {
 function DeleteCards({cardSet, classes, realDeleteCardsFromApp}) {
     const [selectedCards, setSelectedCards] = useState([])
 
-    const delete_Cards = (question, answer) => {
+    const delete_Cards = (id) => {
         // id is a list with either 1 or more elements
-        realDeleteCardsFromApp(cardSet.setId, question, answer)
+        realDeleteCardsFromApp(cardSet.setId, id)
     }
 
     const addSelectedCards = (question, answer, doWeAdd = false) => {
@@ -52,7 +52,7 @@ function DeleteCards({cardSet, classes, realDeleteCardsFromApp}) {
         }
         console.log(setSelectedCards)
     }
-
+    console.log('DELETE CARDS : RERENDERED')
     return (
         <div className={classes.root}>
             <BasicNavbar />
@@ -70,7 +70,7 @@ function DeleteCards({cardSet, classes, realDeleteCardsFromApp}) {
                 {cardSet.cards.map(
                     (card, index) => <DisplaySetCards 
                             card={card} 
-                            key={card.question + toString(index)}
+                            key={card.id}
                             cardNumber={index+1}
                             addSelectedCards={addSelectedCards}
                             delete_Cards={delete_Cards}

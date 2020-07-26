@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import {ValidatorForm} from 'react-material-ui-form-validator'
 
 import TextValidatorStyled from './forms/TextValidatorStyled'
-
+import {v4 as uuid} from 'uuid'
 
 
 function AddQuestionForm({classes, data, addQuestionsFromForm}) {
@@ -52,7 +52,7 @@ function AddQuestionForm({classes, data, addQuestionsFromForm}) {
         for (let i = 0 ; i < all_things.length; i++){
             let question = all_things[i].split(separatedBy)[0]
             let answer = all_things[i].split(separatedBy)[1]
-            let id = new_data.length
+            let id = uuid()
             new_data.push({id: id, question: question, answer: answer})
         }
         // newData is a list

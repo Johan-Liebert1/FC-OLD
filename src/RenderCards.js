@@ -35,10 +35,8 @@ function RenderCards({dummyData, classes}) {
             <CardsNavbar setId={dummyData.setId}/>
             <h4 className={classes.setName}>{dummyData.setName}</h4>
             <div className={classes.root}>
-                
-                
                 <TransitionGroup className={classes.cards}>
-                    <CSSTransition>
+                    <CSSTransition timeout={500}>
                         <FlashCard 
                             question={cards[cardId2].question} 
                             answer={cards[cardId2].answer} 
@@ -51,7 +49,9 @@ function RenderCards({dummyData, classes}) {
 
                     <div className={classes.right} onClick={handleClickRight}>
                         <KeyboardArrowRightIcon className={classes.icon}/>
+                        
                     </div>
+                    
                     <div className={classes.left} onClick={handleClickLeft}>
                         <KeyboardArrowLeftIcon className={classes.icon}/>
                     </div>
