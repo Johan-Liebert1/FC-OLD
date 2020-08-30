@@ -57,14 +57,16 @@ class DisplaySetCards extends Component {
     }
 
     handleSelectClick() {
-        this.setState({isSelected: !this.state.isSelected},() =>{
+        this.setState({isSelected: !this.state.isSelected},() => {
         
-        if(this.state.isSelected){
-            this.props.addSelectedCards(this.props.card.question, this.props.card.answer, true, false)
-            console.log(this.state.isSelected)}
-        else{
-            this.props.addSelectedCards(this.props.card.question, this.props.card.answer, false, true)
-            console.log(this.state.isSelected)}
+            if (this.state.isSelected){
+                this.props.addSelectedCards(this.props.card.question, this.props.card.answer, true, false)
+                console.log(this.state.isSelected)
+            }
+            else {
+                this.props.addSelectedCards(this.props.card.question, this.props.card.answer, false, true)
+                console.log(this.state.isSelected)
+            }
         })
     }
 
@@ -104,7 +106,6 @@ class DisplaySetCards extends Component {
     }
 
     render(){
-        console.log('DISPLAY SET CARDS : RERENDERED')
         const {classes, card, cardNumber, forDeletingCards} = this.props
         const {isSelected, isDialogOpen, formOpen, formQuestion, formAnswer} = this.state
 

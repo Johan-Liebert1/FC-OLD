@@ -46,7 +46,7 @@ function EditCards({classes, cardSet, editCardFromApp}) {
                     (card, index) => <DisplaySetCards 
                             card={card} 
                             key={card.question + toString(index)}
-                            cardNumber={index+1}
+                            cardNumber={index + 1}
                             forDeletingCards={false}
                             editCard={edit}
                         />
